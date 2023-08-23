@@ -1,0 +1,21 @@
+.sidebar {
+  position: relative;
+  background: #6c584c;
+  width: 4rem;
+  height: 100%;
+}
+
+.helpButton {
+  display: block;
+  position: absolute;
+  bottom: 4rem;
+  left: 2rem;
+  cursor: pointer;
+  border: 0.2rem solid #fff;
+  border-radius: 50%;
+  background: #6c584c;
+  width: 4rem;
+  height: 4rem;
+  color: #fff;
+  font-size: 2rem;
+}

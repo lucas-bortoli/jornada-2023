@@ -1,0 +1,18 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+.page h1 {
+  font-size: 2rem;
+}
+
+.details {
+  color: #666;
+  font-style: italic;
+}

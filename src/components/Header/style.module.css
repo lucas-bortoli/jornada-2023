@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 4px solid #f8f8f8;
+  padding: 1rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  user-select: none;
+}
+
+.logo span {
+  color: #ADC178;
+  font-size: inherit;
+}
