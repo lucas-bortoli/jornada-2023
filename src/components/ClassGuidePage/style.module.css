@@ -1,26 +1,7 @@
-.page {
-  position: relative;
+.mainContent {
+  padding: 10vh 10vw;
   width: 100%;
   height: 100%;
-}
-
-.bgImage {
-  position: absolute;
-  top: 0;
-  right: 0;
-  clip-path: url(#my-clip-path);
-  background-image: url("../../assets/bgImage.jpg");
-  background-size: cover;
-  width: 30%;
-  height: 100%;
-}
-
-.mainContent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10vh 10vw;
-  width: 70%;
 }
 
 .mainContent h1 {
@@ -28,56 +9,33 @@
   font-size: 2rem;
 }
 
-.cardList {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
-  list-style: none;
+.fields {
+  display: grid;
+  grid-template-areas:
+    "disciplina temaGeral"
+    "assuntos  assuntos";
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  max-width: 720px;
 }
 
-.cardList a {
-  color: inherit;
-  user-select: none;
-  text-decoration: none;
+.aulaTema {
+  grid-area: temaGeral;
 }
 
-.cardList li {
-  transition: background 60ms ease-in-out, box-shadow 60ms ease-in-out, transform 80ms ease-in-out;
-  cursor: pointer;
-  box-shadow: 0 0.1rem 0.3rem 0 #00000033;
-  border-radius: 1rem;
-  background: #f0f0f0;
-  padding: 1rem;
+.aulaDisciplina {
+  grid-area: disciplina;
 }
 
-.cardList li:is(:hover, :focus) {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.2rem 0.4rem 0 #00000033;
-}
-
-.cardList li:active {
-  transform: translateY(0.1rem);
-  box-shadow: 0 0.05rem 0.2rem 0 #00000033;
-  background-color: #e8e8e8;
-}
-
-.cardSubtitle {
-  font-size: 0.8rem;
+.aulaAssuntos {
+  grid-area: assuntos;
 }
 
 @media screen and (max-width: 640px) {
-  .mainContent {
-    width: 100%;
-  }
-
-  .bgImage {
-    display: none;
-  }
-
-  .cardList {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+  .fields {
+    grid-template-areas:
+      "disciplina"
+      "temaGeral"
+      "assuntos";
   }
 }

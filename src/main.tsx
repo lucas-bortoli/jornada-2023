@@ -1,15 +1,21 @@
-import { App } from "./app.tsx";
+import './index.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+import { createRoot } from 'react-dom/client';
 import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider
-} from "react-router-dom";
-import { MainPage } from "./components/MainPage/index.tsx";
-import "./index.css";
-import { ErrorPage } from "./components/ErrorPage/index.tsx";
-import { ClassGuidePage } from "./components/ClassGuidePage/index.tsx";
-import { render } from "react-dom";
+    createBrowserRouter, createRoutesFromElements, Route, RouterProvider
+} from 'react-router-dom';
+
+import { ThemeProvider } from '@mui/material';
+
+import { App } from './app.tsx';
+import { ClassGuidePage } from './components/ClassGuidePage/index.tsx';
+import { ErrorPage } from './components/ErrorPage/index.tsx';
+import { MainPage } from './components/MainPage/index.tsx';
+import { theme } from './theme.ts';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,4 +26,8 @@ const router = createBrowserRouter(
   )
 );
 
-render(<RouterProvider router={router}></RouterProvider>, document.getElementById("app")!);
+createRoot(document.getElementById("app")!).render(
+  <ThemeProvider theme={theme}>
+    <RouterProvider router={router} />
+  </ThemeProvider>
+);

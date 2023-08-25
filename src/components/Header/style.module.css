@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 2rem;
   border-bottom: 4px solid #f8f8f8;
   padding: 1rem;
 }
@@ -12,6 +13,27 @@
 }
 
 .logo span {
-  color: #ADC178;
+  color: #adc178;
   font-size: inherit;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.userAvatar {
+  /* Usei uma background-image invés de <img> porque o Vite não importava imagens referenciadas no atributo "src"... */
+  border-radius: 50%;
+  background-image: url("../../assets/userAvatar.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  min-width: 2rem;
+  max-width: 2rem;
+  min-height: 2rem;
+  max-height: 2rem;
+}
+
+.spacing {
+  flex-grow: 1;
 }
