@@ -16,3 +16,15 @@
 .fieldSet div {
   align-self: stretch;
 }
+
+.chipList {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.chipList button {
+  margin-top: -0.125rem;
+}
