@@ -1,27 +1,25 @@
-# React + TypeScript + Vite
+# NIA — Jornada 2023
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Screenshot](screenshot.png)
 
-Currently, two official plugins are available:
+## Descrição do Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Bem-vindo ao repositório do projeto **NIA - Jornada 2023**! Este é um projeto desenvolvido como o projeto da disciplina de **Jornada de Aprendizagem** para o ano de 2023.
 
-## Expanding the ESLint configuration
+A disciplina de Jornada de Aprendizagem consiste em resolver um problema da indústria com um projeto prático. Todo ano, um tema é selecionado (neste caso, Sistemas Educacionais) e os alunos devem desenvolver uma solução relacionada ao tema. Isso promove o autodidatismo e o conhecimento de mundo.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+##  Stack utilizada
 
-- Configure the top-level `parserOptions` property like this:
+- Vite
+- TypeScript, Node.js, Material-UI, React, Docker
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## Executando o Projeto Localmente
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Se você deseja executar o projeto em sua máquina local, siga estas etapas:
+
+1. Certifique-se de ter o Node.js instalado: [Download Node.js](https://nodejs.org/)
+2. Instale as dependências: `npm install`
+3. Inicie o servidor de desenvolvimento: `npm run dev`
+4. Abra o navegador e acesse: `http://localhost:5173`
+
+Se tiver alguma dúvida ou precisar de assistência, sinta-se à vontade para abrir uma issue neste repositório.
