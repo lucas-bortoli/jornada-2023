@@ -6,9 +6,15 @@ import { ClassTopics } from "./components/ClassTopics";
 import classNames from "classnames";
 import "../../animations/fadeInSlide.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const ClassGuideCreatePage = () => {
+  const navigate = useNavigate();
   const [classTopics, setClassTopics] = useState<string[]>([]);
+
+  const handleCreateClick = async () => {
+    navigate("/roteiro-de-aula/visualizar");
+  }
 
   return (
     <main className={classNames(styles.mainContent, "animationFadeInSlide")}>
@@ -25,7 +31,7 @@ export const ClassGuideCreatePage = () => {
           onChange={(items) => setClassTopics(items)}
         />
       </section>
-      <Button variant="contained" startIcon={<Grain />}>
+      <Button variant="contained" startIcon={<Grain />} onClick={handleCreateClick}>
         Gerar roteiro
       </Button>
     </main>

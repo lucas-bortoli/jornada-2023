@@ -1,0 +1,46 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100vw;
+  height: 100vh;
+}
+
+.window {
+  position: absolute;
+  right: 1rem;
+  bottom: 0;
+  box-sizing: border-box;
+  box-shadow: 0 0 0.2rem 0 rgba(0, 0, 0, 0.4);
+  border-radius: 1rem 1rem 0 0;
+  width: clamp(200px, calc(100vw - 2rem), 480px);
+  height: clamp(200px, calc(100vh - 10rem), 480px);
+  overflow: hidden;
+}
+
+.titleBar {
+  background: #6C584C;
+  padding: 1.5rem 1rem;
+  color: white;
+  font-weight: bold;
+  line-height: 0;
+  user-select: none;
+}
+
+.window > main {
+  background: #fff;
+  padding: 2rem;
+  height: calc(100% - 3rem);
+  overflow-y: scroll;
+}
+
+.window fieldset {
+  margin-bottom: 2rem;
+  border: none;
+}
+
+.regenerate {
+  float: right;
+}
