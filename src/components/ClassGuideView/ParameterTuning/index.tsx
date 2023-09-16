@@ -26,8 +26,11 @@ export function ParameterTuningWindow() {
         <div className={styles.titleBar}>Alterar parâmetros</div>
         <main>
           <fieldset>
-            <legend>Nível de detalhe: {["visão geral", "equilibrado", "detalhista"][detailLevel - 1]}</legend>
+            <legend>
+              Nível de detalhe: {["visão geral", "equilibrado", "detalhista"][detailLevel - 1]}
+            </legend>
             <Slider
+              marks
               min={1}
               max={3}
               step={1}
@@ -40,6 +43,7 @@ export function ParameterTuningWindow() {
               Criatividade: {["mais preciso", "equilibrado", "mais criativo"][creativity - 1]}
             </legend>
             <Slider
+              marks
               min={1}
               max={3}
               step={1}
@@ -48,8 +52,18 @@ export function ParameterTuningWindow() {
             />
           </fieldset>
           <fieldset>
-            <legend>Comprimento do roteiro: {["sucinto", "menos texto", "normal", "mais texto", "exagerado"][maxLength - 1]}</legend>
-            <Slider min={1} max={5} step={1} value={maxLength} onChange={(e) => setMaxLength(getSliderValue(e))} />
+            <legend>
+              Comprimento do roteiro:{" "}
+              {["sucinto", "menos texto", "normal", "mais texto", "exagerado"][maxLength - 1]}
+            </legend>
+            <Slider
+              marks
+              min={1}
+              max={5}
+              step={1}
+              value={maxLength}
+              onChange={(e) => setMaxLength(getSliderValue(e))}
+            />
           </fieldset>
           <Button variant="contained" startIcon={<Loop />} className={styles.regenerate}>
             Regenerar
