@@ -11,7 +11,7 @@ export const MainPage = () => {
         <h1>O que você deseja fazer agora?</h1>
         <p>Criar novo...</p>
         <ul className={styles.cardList}>
-          <Link to="/roteiro-de-aula">
+          <Link to="/roteiro-de-aula/novo">
             <li>
               <p>Roteiro de aula</p>
               <p className={styles.cardSubtitle}>Lista ordenada</p>

@@ -12,7 +12,7 @@ import {
 import { ThemeProvider } from '@mui/material';
 
 import { App } from './app.tsx';
-import { ClassGuidePage } from './components/ClassGuidePage/index.tsx';
+import { ClassGuideCreatePage } from './components/ClassGuideCreatePage/index.tsx';
 import { ErrorPage } from './components/ErrorPage/index.tsx';
 import { MainPage } from './components/MainPage/index.tsx';
 import { theme } from './theme.ts';
@@ -21,7 +21,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<ErrorPage />}>
       <Route index element={<MainPage />}></Route>
-      <Route path="/roteiro-de-aula" element={<ClassGuidePage />}></Route>
+      <Route path="/roteiro-de-aula/novo" element={<ClassGuideCreatePage />}></Route>
+      <Route path="/roteiro-de-aula/visualizar"
     </Route>
   )
 );

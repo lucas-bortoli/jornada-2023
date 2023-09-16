@@ -1,5 +1,5 @@
 import { Grain } from "@mui/icons-material";
-import { Box, Button, Chip, MenuItem, OutlinedInput, Select, TextField } from "@mui/material";
+import { Button, MenuItem, Select, TextField } from "@mui/material";
 
 import styles from "./style.module.css";
 import { ClassTopics } from "./components/ClassTopics";
@@ -7,7 +7,7 @@ import classNames from "classnames";
 import "../../animations/fadeInSlide.css";
 import { useState } from "react";
 
-export const ClassGuidePage = () => {
+export const ClassGuideCreatePage = () => {
   const [classTopics, setClassTopics] = useState<string[]>([]);
 
   return (
