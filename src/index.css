@@ -29,3 +29,11 @@ span[class*="MuiSlider-mark"] {
   transform: scale(4) translateY(-12.5%);
   filter: invert(0.6) brightness(1.5) !important;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+}

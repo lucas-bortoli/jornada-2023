@@ -19,3 +19,21 @@
   color: #fff;
   font-size: 2rem;
 }
+
+.helpWindow {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.helpTopic {
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.helpTopic summary {
+  cursor: pointer;
+  font-weight: bold;
+  user-select: none;
+}

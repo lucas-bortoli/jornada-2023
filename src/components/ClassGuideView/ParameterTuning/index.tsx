@@ -2,7 +2,7 @@ import { Button, Slider } from "@mui/material";
 import { Loop } from "@mui/icons-material";
 import { useNumber } from "../../../hooks/useNumber";
 import styles from "./style.module.css";
-import classNames from "classnames";
+import { ToolWindow } from "../../ToolWindow";
 
 interface Properties {
   isOpen: boolean;
@@ -23,63 +23,58 @@ export function ParameterTuningWindow(props: Properties) {
   };
 
   return (
-    <div
-      className={classNames(styles.overlay, props.isOpen && styles.isOpen)}
-      onClick={handleCloseOverlay}
-      tabIndex={0}
-      autoFocus
+    <ToolWindow
+      label="Alterar parâmetros"
+      isOpen={props.isOpen}
+      onClose={handleCloseOverlay}
+      className={styles.window}
     >
-      <div className={styles.window} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.titleBar}>Alterar parâmetros</div>
-        <main>
-          <fieldset>
-            <legend>
-              Nível de detalhe: {["visão geral", "equilibrado", "detalhista"][detailLevel - 1]}
-            </legend>
-            <Slider
-              marks
-              min={1}
-              max={3}
-              step={1}
-              value={detailLevel}
-              onChange={(e) => setDetailLevel(getSliderValue(e))}
-            />
-          </fieldset>
-          <fieldset>
-            <legend>
-              Criatividade: {["mais preciso", "equilibrado", "mais criativo"][creativity - 1]}
-            </legend>
-            <Slider
-              marks
-              min={1}
-              max={3}
-              step={1}
-              value={creativity}
-              onChange={(e) => setCreativity(getSliderValue(e))}
-            />
-          </fieldset>
-          <fieldset>
-            <legend>
-              Comprimento do roteiro:{" "}
-              {["sucinto", "menos texto", "normal", "mais texto", "exagerado"][maxLength - 1]}
-            </legend>
-            <Slider
-              marks
-              min={1}
-              max={5}
-              step={1}
-              value={maxLength}
-              onChange={(e) => setMaxLength(getSliderValue(e))}
-            />
-          </fieldset>
-          <div className={styles.actionButtons}>
-            <Button onClick={handleCloseOverlay}>Cancelar</Button>
-            <Button variant="contained" startIcon={<Loop />} className={styles.regenerate}>
-              Regenerar
-            </Button>
-          </div>
-        </main>
+      <fieldset>
+        <legend>
+          Nível de detalhe: {["visão geral", "equilibrado", "detalhista"][detailLevel - 1]}
+        </legend>
+        <Slider
+          marks
+          min={1}
+          max={3}
+          step={1}
+          value={detailLevel}
+          onChange={(e) => setDetailLevel(getSliderValue(e))}
+        />
+      </fieldset>
+      <fieldset>
+        <legend>
+          Criatividade: {["mais preciso", "equilibrado", "mais criativo"][creativity - 1]}
+        </legend>
+        <Slider
+          marks
+          min={1}
+          max={3}
+          step={1}
+          value={creativity}
+          onChange={(e) => setCreativity(getSliderValue(e))}
+        />
+      </fieldset>
+      <fieldset>
+        <legend>
+          Comprimento do roteiro:{" "}
+          {["sucinto", "menos texto", "normal", "mais texto", "exagerado"][maxLength - 1]}
+        </legend>
+        <Slider
+          marks
+          min={1}
+          max={5}
+          step={1}
+          value={maxLength}
+          onChange={(e) => setMaxLength(getSliderValue(e))}
+        />
+      </fieldset>
+      <div className={styles.actionButtons}>
+        <Button onClick={handleCloseOverlay}>Cancelar</Button>
+        <Button variant="contained" startIcon={<Loop />} className={styles.regenerate}>
+          Regenerar
+        </Button>
       </div>
-    </div>
+    </ToolWindow>
   );
 }
