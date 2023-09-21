@@ -1,13 +1,16 @@
 import classNames from "classnames";
 import styles from "./style.module.css";
 import { Button } from "@mui/material";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { ParameterTuningWindow } from "./ParameterTuning";
+import { useState } from "react";
 
 export function ClassGuideViewPage() {
   const navigate = useNavigate();
+  const [isTuningWindowOpen, setTuningWindowOpen] = useState(false);
 
   const handleOpenParameterAdjustWindow = () => {
-    navigate("/roteiro-de-aula/visualizar/ajustes", { replace: true });
+    setTuningWindowOpen(true);
   };
 
   return (
@@ -22,7 +25,10 @@ export function ClassGuideViewPage() {
       <article className={styles.page}>
         <h1>Roteiro gerado</h1>
       </article>
-      <Outlet />
+      <ParameterTuningWindow
+        isOpen={isTuningWindowOpen}
+        onClose={() => setTuningWindowOpen(false)}
+      />
     </main>
   );
 }

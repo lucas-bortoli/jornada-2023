@@ -20,16 +20,13 @@ import { ErrorPage } from "./components/ErrorPage/index.tsx";
 import { MainPage } from "./components/MainPage/index.tsx";
 import { theme } from "./theme.ts";
 import { ClassGuideViewPage } from "./components/ClassGuideView/index.tsx";
-import { ParameterTuningWindow } from "./components/ClassGuideView/ParameterTuning/index.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<ErrorPage />}>
       <Route index element={<MainPage />}></Route>
       <Route path="/roteiro-de-aula/novo" element={<ClassGuideCreatePage />}></Route>
-      <Route path="/roteiro-de-aula/visualizar" element={<ClassGuideViewPage />}>
-        <Route path="/roteiro-de-aula/visualizar/ajustes" element={<ParameterTuningWindow />} />
-      </Route>
+      <Route path="/roteiro-de-aula/visualizar" element={<ClassGuideViewPage />}></Route>
     </Route>
   )
 );

@@ -2,16 +2,26 @@
   position: fixed;
   top: 0;
   left: 0;
+  opacity: 0;
   z-index: 100;
+  transition: opacity ease-in-out 100ms;
   background: rgba(0, 0, 0, 0.4);
   width: 100vw;
   height: 100vh;
+  pointer-events: none;
+}
+
+.overlay.isOpen {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .window {
   position: absolute;
   right: 1rem;
   bottom: 0;
+  transform: translateY(100%);
+  transition: transform ease-in-out 200ms;
   box-sizing: border-box;
   box-shadow: 0 0 0.2rem 0 rgba(0, 0, 0, 0.4);
   border-radius: 1rem 1rem 0 0;
@@ -20,8 +30,12 @@
   overflow: hidden;
 }
 
+.overlay.isOpen > .window {
+  transform: translateY(0);
+}
+
 .titleBar {
-  background: #6C584C;
+  background: #6c584c;
   padding: 1.5rem 1rem;
   color: white;
   font-weight: bold;
@@ -43,4 +57,10 @@
 
 .regenerate {
   float: right;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
 }
