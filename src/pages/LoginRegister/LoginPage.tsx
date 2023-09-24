@@ -1,7 +1,7 @@
 import { Button, Card, InputAdornment, Link, TextField } from "@mui/material";
 import styles from "./style.module.css";
 import { useState } from "react";
-import { AccountCircle, Key, Password } from "@mui/icons-material";
+import { AccountCircle, Key } from "@mui/icons-material";
 
 export function LoginPage() {
   const [email, setEmail] = useState("");
