@@ -21,11 +21,18 @@ import { MainPage } from "./components/MainPage/index.tsx";
 import { theme } from "./theme.ts";
 import { ClassGuideViewPage } from "./components/ClassGuideView/index.tsx";
 import { AuthProvider } from "./hooks/useAuth.tsx";
+import { LoginPage } from "./pages/LoginRegister/LoginPage.tsx";
+import { LoginRegisterPageWrapper } from "./pages/LoginRegister/index.tsx";
+import { RegisterPage } from "./pages/LoginRegister/RegisterPage.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<ErrorPage />}>
       <Route index element={<MainPage />}></Route>
+      <Route path="auth" element={<LoginRegisterPageWrapper />}>
+        <Route index element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
+      </Route>
       <Route path="/roteiro-de-aula/novo" element={<ClassGuideCreatePage />}></Route>
       <Route path="/roteiro-de-aula/visualizar" element={<ClassGuideViewPage />}></Route>
     </Route>
