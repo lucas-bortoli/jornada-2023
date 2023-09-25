@@ -20,6 +20,7 @@ import { ErrorPage } from "./components/ErrorPage/index.tsx";
 import { MainPage } from "./components/MainPage/index.tsx";
 import { theme } from "./theme.ts";
 import { ClassGuideViewPage } from "./components/ClassGuideView/index.tsx";
+import { AuthProvider } from "./hooks/useAuth.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,7 +33,9 @@ const router = createBrowserRouter(
 );
 
 createRoot(document.getElementById("app")!).render(
-  <ThemeProvider theme={theme}>
-    <RouterProvider router={router} />
-  </ThemeProvider>
+  <AuthProvider>
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  </AuthProvider>
 );
