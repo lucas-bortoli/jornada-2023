@@ -1,5 +1,6 @@
 .sidebar {
   position: relative;
+  z-index: 1;
   background: #6c584c;
   width: 4rem;
   height: 100%;
