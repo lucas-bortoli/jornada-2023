@@ -1,6 +1,10 @@
 # NIA — Jornada 2023
 
-![Screenshot](screenshot.png)
+![Screenshot tela de login](./doc/screenshot_loginpage.png)
+
+![Screenshot tela de cadastro](./doc/screenshot_registerpage.png)
+
+![Screenshot tela inicial](./doc/screenshot_homepage.png)
 
 ## Descrição do Projeto
 
