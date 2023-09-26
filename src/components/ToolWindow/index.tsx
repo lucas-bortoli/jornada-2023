@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import styles from "./styles.module.css";
-import { PropsWithChildren, useRef } from "react";
+import { PropsWithChildren, useEffect, useRef } from "react";
 import { useGeminataDrag } from "../../hooks/useGeminataDrag";
 import { useGeminataResize } from "../../hooks/useGeminataResize";
 import { createPortal } from "react-dom";
@@ -20,7 +20,13 @@ export function ToolWindow(props: Properties) {
 
   useGeminataDrag(windowRef, titlebarRef);
   useGeminataResize(windowRef, resizeAreaRef);
-  useGeminataStacking(windowRef);
+  const { bringToTop } = useGeminataStacking(windowRef);
+
+  useEffect(() => {
+    if (props.isOpen) {
+      bringToTop();
+    }
+  }, [props.isOpen]);
 
   return createPortal(
     <div

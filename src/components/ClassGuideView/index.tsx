@@ -1,16 +1,14 @@
 import classNames from "classnames";
 import styles from "./style.module.css";
 import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { ParameterTuningWindow } from "./ParameterTuning";
 import { useState } from "react";
 
 export function ClassGuideViewPage() {
-  const navigate = useNavigate();
   const [isTuningWindowOpen, setTuningWindowOpen] = useState(false);
 
   const handleOpenParameterAdjustWindow = () => {
-    setTuningWindowOpen(true);
+    setTuningWindowOpen(!isTuningWindowOpen);
   };
 
   return (

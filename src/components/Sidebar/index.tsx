@@ -7,7 +7,7 @@ export const Sidebar = () => {
 
   return (
     <div className={styles.sidebar}>
-      <button className={styles.helpButton} onClick={() => setHelpOpen(true)}>
+      <button className={styles.helpButton} onClick={() => setHelpOpen(!isHelpOpen)}>
         ?
       </button>
       <ToolWindow

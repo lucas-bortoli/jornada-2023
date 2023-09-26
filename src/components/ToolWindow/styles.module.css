@@ -2,7 +2,7 @@
   position: fixed;
   right: 1rem;
   bottom: 0;
-  transform: translateY(100%);
+  transform: translateY(5%) scale(0.9) rotateX(-45deg);
   opacity: 0;
   z-index: 2;
   transition: transform ease-in-out 200ms, opacity ease-in-out 200ms;
@@ -11,13 +11,15 @@
   border-radius: 1rem 1rem 0 0;
   width: clamp(300px, calc(100vw - 2rem), 480px);
   min-width: 300px;
+  max-width: 80vw;
   height: clamp(300px, calc(100vh - 10rem), 480px);
   min-height: 300px;
+  max-height: 80vh;
   pointer-events: none;
 }
 
 .window.isOpen {
-  transform: translateY(0);
+  transform: translateY(0) scale(1) rotateX(0);
   opacity: 1;
   pointer-events: all;
 }
@@ -86,6 +88,7 @@
 .buttons button {
   display: inline-block;
   position: relative;
+  cursor: pointer;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   border: none;
   border-radius: 4px;
@@ -110,7 +113,7 @@
 }
 
 .buttons button:active {
-  transform: scaleY(-1);
+  filter: brightness(0.85);
 }
 
 .buttons .close {

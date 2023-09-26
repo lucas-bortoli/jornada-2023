@@ -69,6 +69,7 @@ export function ParameterTuningWindow(props: Properties) {
           onChange={(e) => setMaxLength(getSliderValue(e))}
         />
       </fieldset>
+      <div className={styles.spacing} />
       <div className={styles.actionButtons}>
         <Button onClick={handleCloseOverlay}>Cancelar</Button>
         <Button variant="contained" startIcon={<Loop />} className={styles.regenerate}>

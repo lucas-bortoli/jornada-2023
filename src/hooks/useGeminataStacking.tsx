@@ -5,14 +5,14 @@ type RefHtmlMaybe = MutableRefObject<HTMLDivElement  | null>;
 // Sei que devo usar a ContextApi para isso, mas por enquanto tá OK
 let zIndex = 200;
 
+function increaseZ(el: HTMLElement) {
+  el.style.zIndex = `${++zIndex}`;
+}
+
 export function useGeminataStacking(wind: RefHtmlMaybe) {
   useEffect(() => {
     function handleMouseDown() {
-      if (!wind || !wind.current) {
-        return;
-      }
-
-      wind.current.style.zIndex = `${++zIndex}`;
+      wind.current && increaseZ(wind.current);
     }
 
     if (wind.current) wind.current.addEventListener("mousedown", handleMouseDown);
@@ -21,4 +21,10 @@ export function useGeminataStacking(wind: RefHtmlMaybe) {
       if (wind.current) wind.current.removeEventListener("mousedown", handleMouseDown);
     };
   }, [wind]);
+
+  const bringToTop = () => {
+    wind.current && increaseZ(wind.current);
+  }
+
+  return { bringToTop };
 }
