@@ -24,6 +24,7 @@ import { AuthProvider } from "./hooks/useAuth.tsx";
 import { LoginPage } from "./pages/LoginRegister/LoginPage.tsx";
 import { LoginRegisterPageWrapper } from "./pages/LoginRegister/index.tsx";
 import { RegisterPage } from "./pages/LoginRegister/RegisterPage.tsx";
+import { ForgotPasswordPage } from "./pages/LoginRegister/ForgotPasswordPage.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,7 +32,8 @@ const router = createBrowserRouter(
       <Route index element={<MainPage />}></Route>
       <Route path="auth" element={<LoginRegisterPageWrapper />}>
         <Route index element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
+        <Route path="registrar" element={<RegisterPage />} />
+        <Route path="esqueci-senha" element={<ForgotPasswordPage />} />
       </Route>
       <Route path="/roteiro-de-aula/novo" element={<ClassGuideCreatePage />}></Route>
       <Route path="/roteiro-de-aula/visualizar" element={<ClassGuideViewPage />}></Route>

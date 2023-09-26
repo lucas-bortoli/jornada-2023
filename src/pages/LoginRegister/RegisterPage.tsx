@@ -1,20 +1,16 @@
-import { Button, Card, InputAdornment, Link, TextField, TextFieldProps } from "@mui/material";
+import { Button, Card, Link } from "@mui/material";
 import styles from "./style.module.css";
 import { Email, Key, Phone } from "@mui/icons-material";
-import classNames from "classnames";
-
-function InputWithIcon(props: TextFieldProps & { icon?: React.ReactNode }) {
-  return (
-    <TextField
-      {...props}
-      InputProps={{
-        endAdornment: props.icon && <InputAdornment position="end">{props.icon}</InputAdornment>
-      }}
-    />
-  );
-}
+import { InputWithIcon } from "./InputWithIcon";
+import { useNavigate } from "react-router-dom";
 
 export function RegisterPage() {
+  const navigate = useNavigate();
+
+  const handleLoginInstead = () => {
+    navigate("..");
+  }
+
   return (
     <Card className={styles.card}>
       <h1>Registro</h1>
@@ -26,7 +22,7 @@ export function RegisterPage() {
           <InputWithIcon type="password" label="Confirmar senha" icon={<Key />} />
         </div>
         <div className={styles.links}>
-          <Link>Ao invés disso, fazer login</Link>
+          <Link onClick={handleLoginInstead}>Ao invés disso, fazer login</Link>
         </div>
         <div className={styles.formActions}>
           <Button variant="contained">Criar conta</Button>

@@ -1,47 +1,29 @@
-import { Button, Card, InputAdornment, Link, TextField } from "@mui/material";
+import { Button, Card, Link } from "@mui/material";
 import styles from "./style.module.css";
-import { useState } from "react";
 import { AccountCircle, Key } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import { InputWithIcon } from "./InputWithIcon";
 
 export function LoginPage() {
-  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
-  const resetPassword = () => {
-    let newPw = prompt(`Qual a senha nova para o usuário ${email}?`);
+  const handleForgotPassword = () => {
+    navigate("./esqueci-senha");
+  }
 
-    alert(`A senha de ${email} foi alterada para ${newPw}`);
-  };
+  const handleRegisterInstead = () => {
+    navigate("./registrar");
+  }
 
   return (
     <Card className={styles.card}>
       <h1>Login</h1>
       <form className={styles.form}>
-        <TextField
-          label="E-mail ou telefone"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AccountCircle />
-              </InputAdornment>
-            )
-          }}
-        />
-        <TextField
-          type="password"
-          label="Senha"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Key />
-              </InputAdornment>
-            )
-          }}
-        />
+        <InputWithIcon label="E-mail ou telefone" icon={<AccountCircle />} />
+        <InputWithIcon type="password" label="Senha" icon={<Key />} />
         <div className={styles.links}>
-          <Link onClick={resetPassword}>Não tenho cadastro ainda</Link>
-          <Link onClick={resetPassword}>Esqueci minha senha</Link>
+          <Link onClick={handleRegisterInstead}>Não tenho cadastro ainda</Link>
+          <Link onClick={handleForgotPassword}>Esqueci minha senha</Link>
         </div>
         <div className={styles.formActions}>
           <Button variant="contained">Entrar</Button>

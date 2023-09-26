@@ -19,6 +19,8 @@
 
 .card {
   width: clamp(0px, calc(100% - 2rem), 480px);
+  max-height: 80%;
+  overflow-y: scroll !important;
 }
 
 .card > * {
