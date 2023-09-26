@@ -8,7 +8,7 @@ export const ErrorPage = () => {
   return (
     <div className={styles.page}>
       <h1>{error?.message ?? "Houve um erro"}</h1>
-      <p>Não foi possível atender a sua solicitação.</p>
+      <p>Não foi possível atender à solicitação. Tente novamente.</p>
       <p className={styles.details}>
         {error.statusText || error.message || JSON.stringify(error, null, "\t")}
       </p>
