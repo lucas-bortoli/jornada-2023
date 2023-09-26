@@ -40,7 +40,9 @@ export function ToolWindow(props: Properties) {
           <button className={styles.close} onClick={props.onClose}></button>
         </div>
       </div>
-      <main className={props.className}>{props.children}</main>
+      <div className={styles.contentWrapper}>
+        <main className={props.className}>{props.children}</main>
+      </div>
       <div className={styles.resizeBorder} ref={resizeAreaRef}></div>
     </div>,
     document.body
