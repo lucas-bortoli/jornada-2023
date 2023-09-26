@@ -7,6 +7,7 @@ import classNames from "classnames";
 import "../../animations/fadeInSlide.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export const ClassGuideCreatePage = () => {
   const navigate = useNavigate();
@@ -15,6 +16,8 @@ export const ClassGuideCreatePage = () => {
   const handleCreateClick = async () => {
     navigate("/roteiro-de-aula/visualizar");
   }
+
+  useDocumentTitle("Criar novo roteiro de aula");
 
   return (
     <main className={classNames(styles.mainContent, "animationFadeInSlide")}>

@@ -2,8 +2,11 @@ import { Link } from 'react-router-dom';
 import styles from './style.module.css';
 import "../../animations/fadeInSlide.css";
 import classNames from 'classnames';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 export const MainPage = () => {
+  useDocumentTitle("Página inicial");
+
   return (
     <div className={styles.page}>
       <main className={classNames(styles.mainContent, "animationFadeInSlide")}>

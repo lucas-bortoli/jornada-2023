@@ -1,9 +1,12 @@
 import { useRouteError } from 'react-router-dom';
 
 import styles from './style.module.css';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 export const ErrorPage = () => {
   const error = useRouteError() as any;
+
+  useDocumentTitle("Houve um erro!");
 
   return (
     <div className={styles.page}>

@@ -3,6 +3,7 @@ import styles from "./style.module.css";
 import { AccountCircle, Key } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { InputWithIcon } from "./InputWithIcon";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export function LoginPage() {
   const navigate = useNavigate();
@@ -14,6 +15,8 @@ export function LoginPage() {
   const handleRegisterInstead = () => {
     navigate("./registrar");
   }
+
+  useDocumentTitle("Login");
 
   return (
     <Card className={styles.card}>

@@ -3,6 +3,7 @@ import styles from "./style.module.css";
 import { Email, Key, Phone } from "@mui/icons-material";
 import { InputWithIcon } from "./InputWithIcon";
 import { useNavigate } from "react-router-dom";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export function ForgotPasswordPage() {
   const navigate = useNavigate();
@@ -10,6 +11,8 @@ export function ForgotPasswordPage() {
   const handleLoginInstead = () => {
     navigate("..");
   };
+
+  useDocumentTitle("Recuperação de senha");
 
   return (
     <Card className={styles.card}>

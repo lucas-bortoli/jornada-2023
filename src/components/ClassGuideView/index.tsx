@@ -3,6 +3,7 @@ import styles from "./style.module.css";
 import { Button } from "@mui/material";
 import { ParameterTuningWindow } from "./ParameterTuning";
 import { useState } from "react";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export function ClassGuideViewPage() {
   const [isTuningWindowOpen, setTuningWindowOpen] = useState(true);
@@ -10,6 +11,8 @@ export function ClassGuideViewPage() {
   const handleOpenParameterAdjustWindow = () => {
     setTuningWindowOpen(!isTuningWindowOpen);
   };
+
+  useDocumentTitle("Visualizar roteiro de aula");
 
   return (
     <main className={classNames(styles.mainContent, "animationFadeInSlide")}>
