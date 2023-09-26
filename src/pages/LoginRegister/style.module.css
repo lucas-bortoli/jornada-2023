@@ -21,6 +21,10 @@
   width: clamp(0px, calc(100% - 2rem), 480px);
 }
 
+.card > * {
+  animation: login_fadeIn 200ms ease-in-out;
+}
+
 .card, .form {
   display: flex;
   flex-direction: column;
@@ -52,5 +56,17 @@
 @media screen and (max-width: 640px) {
   .horiz {
     flex-direction: column;
+  }
+}
+
+@keyframes login_fadeIn {
+  0% {
+    transform: translateX(10%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

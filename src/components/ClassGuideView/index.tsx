@@ -5,7 +5,7 @@ import { ParameterTuningWindow } from "./ParameterTuning";
 import { useState } from "react";
 
 export function ClassGuideViewPage() {
-  const [isTuningWindowOpen, setTuningWindowOpen] = useState(false);
+  const [isTuningWindowOpen, setTuningWindowOpen] = useState(true);
 
   const handleOpenParameterAdjustWindow = () => {
     setTuningWindowOpen(!isTuningWindowOpen);

@@ -1,13 +1,29 @@
 /**
  * Código reaproveitado do projeto GeminataOS: https://github.com/lucas-bortoli/geminata-os/blob/master/src/System/UI/Window/useDrag.tsx
  * Levemente modificado para atender às necessidades deste projeto.
-**/
+ **/
 
 import { MutableRefObject, useEffect, useState } from "react";
 
-type RefHtmlMaybe = MutableRefObject<HTMLDivElement  | null>;
+type RefHtmlMaybe = MutableRefObject<HTMLDivElement | null>;
 
-export function useGeminataDrag(movableElement: RefHtmlMaybe, dragArea: RefHtmlMaybe = movableElement) {
+function setElementPosition(element: HTMLDivElement, x: number | "center", y: number | "center") {
+  const box = element.getBoundingClientRect();
+
+  const resolvedX = x === "center" ? innerWidth / 2 - box.width / 2 : x;
+  const resolvedY = y === "center" ? innerHeight / 2 - box.height / 2 : y;
+
+  // We only want movement in the horizontal axis
+  element.style.left = `${resolvedX}px`;
+  element.style.top = `${resolvedY}px`;
+  element.style.bottom = "unset";
+  element.style.right = "unset";
+}
+
+export function useGeminataDrag(
+  movableElement: RefHtmlMaybe,
+  dragArea: RefHtmlMaybe = movableElement
+) {
   const [dragState, setDragState] = useState<null | {
     x: number;
     y: number;
@@ -28,12 +44,12 @@ export function useGeminataDrag(movableElement: RefHtmlMaybe, dragArea: RefHtmlM
       event.preventDefault();
 
       const rect = movableElement.current!.getBoundingClientRect();
-      console.log(event.clientY, rect.y)
+      console.log(event.clientY, rect.y);
       setDragState({
         x: event.clientX,
         y: event.clientY,
         offsetX: event.clientX - rect.x,
-        offsetY: event.clientY - rect.y,
+        offsetY: event.clientY - rect.y
       });
     }
 
@@ -52,13 +68,7 @@ export function useGeminataDrag(movableElement: RefHtmlMaybe, dragArea: RefHtmlM
         return;
       }
 
-      const element = movableElement.current;
-
-      // We only want movement in the horizontal axis
-      element.style.left = `${x - dragState.offsetX}px`;
-      element.style.top = `${y - dragState.offsetY}px`;
-      element.style.bottom = "unset";
-      element.style.right = "unset";
+      setElementPosition(movableElement.current, x - dragState.offsetX, y - dragState.offsetY);
     }
 
     if (dragState === null) document.body.addEventListener("mousedown", onMouseDown);
@@ -72,5 +82,15 @@ export function useGeminataDrag(movableElement: RefHtmlMaybe, dragArea: RefHtmlM
     };
   }, [dragState]);
 
-  return dragState;
+  const setPosition = (x: number | "center", y: number | "center") => {
+    const element = movableElement.current;
+
+    if (!element) {
+      return;
+    }
+
+    setElementPosition(element, x, y);
+  };
+
+  return { setPosition, dragState };
 }
