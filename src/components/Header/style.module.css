@@ -23,6 +23,9 @@
 }
 
 .userAvatar {
+  transition: filter 100ms ease-in-out;
+  cursor: pointer;
+  border: 0;
   /* Usei uma background-image invés de <img> porque o Vite não importava imagens referenciadas no atributo "src"... */
   border-radius: 50%;
   background-image: url("../../assets/userAvatar.png");
@@ -32,6 +35,14 @@
   max-width: 2rem;
   min-height: 2rem;
   max-height: 2rem;
+}
+
+.userAvatar:hover {
+  filter: brightness(1.1) contrast(0.7);
+}
+
+.userAvatar:active {
+  filter: brightness(0.8) contrast(0.7);
 }
 
 .spacing {

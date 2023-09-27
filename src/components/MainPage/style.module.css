@@ -21,6 +21,7 @@
   left: 0;
   padding: 10vh 10vw;
   width: 70%;
+  overflow-y: scroll;
 }
 
 .mainContent h1 {
@@ -33,6 +34,7 @@
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 1rem;
+  padding: 0;
   list-style: none;
 }
 
@@ -62,11 +64,15 @@
   background-color: #e8e8e8;
 }
 
+.cardList li * {
+  margin: 0;
+}
+
 .cardSubtitle {
   font-size: 0.8rem;
 }
 
-@media screen and (max-width:720px) {
+@media screen and (max-width: 720px) {
   .mainContent {
     width: 100%;
   }
