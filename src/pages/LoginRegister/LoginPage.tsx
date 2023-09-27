@@ -10,11 +10,11 @@ export function LoginPage() {
 
   const handleForgotPassword = () => {
     navigate("./esqueci-senha");
-  }
+  };
 
   const handleRegisterInstead = () => {
     navigate("./registrar");
-  }
+  };
 
   useDocumentTitle("Login");
 

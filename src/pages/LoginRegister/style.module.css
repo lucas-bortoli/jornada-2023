@@ -27,7 +27,8 @@
   animation: login_fadeIn 200ms ease-in-out;
 }
 
-.card, .form {
+.card,
+.form {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;

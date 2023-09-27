@@ -1,14 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./style.module.css";
 import { useAuth } from "../../hooks/useAuth";
-import { Menu, MenuItem } from "@mui/material";
+import { Button, Menu, MenuItem } from "@mui/material";
 import { useRef, useState } from "react";
+import { run } from "../../utils/run";
 
 export const Header = () => {
   const [isUserMenuOpen, setUserMenuOpen] = useState(false);
   const userMenuAnchor = useRef<HTMLButtonElement | null>(null);
-
+  const navigate = useNavigate();
   const auth = useAuth();
+
+  const handleGoToLogin = () => {
+    navigate("/auth");
+  };
 
   const handleUserMenuClose = () => {
     setUserMenuOpen(false);
@@ -22,7 +27,7 @@ export const Header = () => {
     <header className={styles.header}>
       <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
         <div className={styles.logo}>
-          🍃 N<span>IA</span>
+          🍃 Nav<span>IA</span>
         </div>
       </Link>
       <div className={styles.spacing} />
@@ -30,11 +35,24 @@ export const Header = () => {
       <div>
         {auth.loginStatus} {auth.token}
       </div>
-      <button
-        className={styles.userAvatar}
-        ref={userMenuAnchor}
-        onClick={() => setUserMenuOpen(true)}
-      />
+      {run(() => {
+        switch (auth.loginStatus) {
+          case "LOGGED_IN":
+            return (
+              <button
+                className={styles.userAvatar}
+                ref={userMenuAnchor}
+                onClick={() => setUserMenuOpen(true)}
+              />
+            );
+          case "LOGGED_OUT":
+            return (
+              <Button variant="contained" onClick={handleGoToLogin}>
+                Fazer login
+              </Button>
+            );
+        }
+      })}
       <Menu
         MenuListProps={{
           "aria-labelledby": "fade-button"
