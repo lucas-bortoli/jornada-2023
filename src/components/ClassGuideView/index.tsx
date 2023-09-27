@@ -4,9 +4,11 @@ import { Button } from "@mui/material";
 import { ParameterTuningWindow } from "./ParameterTuning";
 import { useState } from "react";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export function ClassGuideViewPage() {
-  const [isTuningWindowOpen, setTuningWindowOpen] = useState(true);
+  const isTuningInitiallyOpen = !useMediaQuery("(max-width: 640px)");
+  const [isTuningWindowOpen, setTuningWindowOpen] = useState(isTuningInitiallyOpen);
 
   const handleOpenParameterAdjustWindow = () => {
     setTuningWindowOpen(!isTuningWindowOpen);

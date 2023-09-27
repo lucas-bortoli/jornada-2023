@@ -37,3 +37,13 @@
 .spacing {
   flex-grow: 1;
 }
+
+@media screen and (max-width: 640px) {
+  .header {
+    gap: 0.5rem;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+}

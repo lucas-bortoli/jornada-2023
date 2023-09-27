@@ -8,3 +8,9 @@
   width: calc(100% - 4rem);
   height: 100%;
 }
+
+@media screen and (max-width: 640px) {
+  .page {
+    width: 100%;
+  }
+}

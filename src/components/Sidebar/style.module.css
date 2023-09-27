@@ -38,3 +38,9 @@
   font-weight: bold;
   user-select: none;
 }
+
+@media screen and (max-width: 640px) {
+  .sidebar {
+    display: none;
+  }
+}
