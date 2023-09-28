@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
-import styles from './style.module.css';
+import { Link } from "react-router-dom";
+import styles from "./style.module.css";
 import "../../animations/fadeInSlide.css";
-import classNames from 'classnames';
-import { useDocumentTitle } from '../../hooks/useDocumentTitle';
+import classNames from "classnames";
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 
 export const MainPage = () => {
   useDocumentTitle("Página inicial");
@@ -20,7 +20,7 @@ export const MainPage = () => {
               <p className={styles.cardSubtitle}>Lista ordenada</p>
             </li>
           </Link>
-          <li>
+          <li aria-disabled>
             <p>Slide</p>
             <p className={styles.cardSubtitle}>PowerPoint</p>
           </li>

@@ -47,7 +47,7 @@
 .cardList li {
   transition: background 60ms ease-in-out, box-shadow 60ms ease-in-out, transform 80ms ease-in-out;
   cursor: pointer;
-  box-shadow: 0 0.1rem 0.3rem 0 #00000033;
+  box-shadow: 0 0.2rem 0.3rem 0 #00000033;
   border-radius: 1rem;
   background: #f0f0f0;
   padding: 1rem 6rem 1rem 1rem;
@@ -55,7 +55,7 @@
 
 .cardList li:is(:hover, :focus) {
   transform: translateY(-0.1rem);
-  box-shadow: 0 0.2rem 0.4rem 0 #00000033;
+  box-shadow: 0 0.4rem 0.6rem 0 #00000033;
 }
 
 .cardList li:active {
@@ -66,6 +66,13 @@
 
 .cardList li * {
   margin: 0;
+}
+
+.cardList li[aria-disabled] {
+  box-shadow: none;
+  background: #e0e0e0;
+  pointer-events: none;
+  user-select: none;
 }
 
 .cardSubtitle {
