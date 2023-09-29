@@ -36,7 +36,6 @@ export function ClassGuideViewPage() {
         </Button>
       </div>
       <article className={styles.page} ref={articleRef}>
-        <h1>Roteiro gerado</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
           <a href="http://loripsum.net/" target="_blank">

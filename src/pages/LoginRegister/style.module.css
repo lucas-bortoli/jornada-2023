@@ -75,6 +75,10 @@
   text-align: center !important;
 }
 
+.loginError {
+  color: #d32f2f;
+}
+
 @media screen and (max-width: 640px) {
   .mainContent h1 {
     font-size: 1rem;

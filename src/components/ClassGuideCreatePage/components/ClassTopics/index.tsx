@@ -1,12 +1,7 @@
 import {
-  Box,
-  Button,
   Chip,
   IconButton,
-  MenuItem,
-  OutlinedInput,
   Paper,
-  Select
 } from "@mui/material";
 import styles from "./style.module.css";
 import classNames from "classnames";
@@ -31,8 +26,6 @@ export const ClassTopics = (props: Props) => {
   const handleDelete = (topic: string) => {
     props.onChange(props.items.filter((item) => item !== topic));
   };
-
-  console.log(props.items);
 
   return (
     <fieldset className={classNames(props.className, styles.fieldSet)}>

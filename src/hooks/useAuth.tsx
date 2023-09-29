@@ -1,4 +1,4 @@
-import { PropsWithChildren, createContext, useContext, useEffect, useState } from "react";
+import { PropsWithChildren, createContext, useContext, useState } from "react";
 import resolveAfter from "../utils/resolveAfter";
 import { useEffectOnce } from "./useEffectOnce";
 
@@ -20,7 +20,7 @@ interface AuthContext {
   user: User | null;
   token: string;
   loginStatus: "LOGGED_OUT" | "LOGGED_IN" | "PENDING";
-  login: (token: string) => void;
+  login: (token: string) => Promise<boolean>;
   logout: () => void;
 }
 
@@ -41,12 +41,22 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       // API call to /login or whatever to get our user object
       await resolveAfter(4000 * (Math.random() + 0.1));
 
+      // Has login failed?
+      const _error = true;
+      if (_error) {
+        updateLoginStatus("LOGGED_OUT");
+        updateUser(null);
+        return false;
+      }
+
       const user: User = { firstName: "Lucas" };
 
       updateLoginStatus("LOGGED_IN");
       updateToken(token);
       updateUser(user);
       Persistence.setToken(token);
+
+      return true;
     },
     logout: () => {
       updateLoginStatus("LOGGED_OUT");
