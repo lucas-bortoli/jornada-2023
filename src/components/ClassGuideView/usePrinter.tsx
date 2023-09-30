@@ -7,7 +7,7 @@ export const usePrinter = () => {
     const frame = document.createElement("iframe");
 
     frame.style.position = "fixed";
-    frame.style.top = "200vh";
+    frame.style.top = "300vh";
 
     document.body.appendChild(frame);
 
@@ -22,7 +22,7 @@ export const usePrinter = () => {
     };
   }, []);
 
-  const triggerPrint = (srcElement: HTMLElement, title: string = "Documento") => {
+  const triggerPrint = (srcElement: HTMLElement, title: string = "Documento sem título") => {
     if (!iframe.current) {
       return false;
     }
