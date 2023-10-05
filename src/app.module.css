@@ -1,7 +1,7 @@
 .mainWrapper {
   display: flex;
   width: 100%;
-  height: calc(100% - 3.5rem);
+  height: calc(100% - 2.5rem);
 }
 
 .page {

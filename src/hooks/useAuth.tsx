@@ -1,6 +1,8 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 import resolveAfter from "../utils/resolveAfter";
 import { useEffectOnce } from "./useEffectOnce";
+import { User } from "../api/User";
+import { api } from "../api/api";
 
 /**
  * Código inspirado em https://stackoverflow.com/a/68694612
@@ -11,10 +13,6 @@ const Persistence = {
   setToken: (token: string) => localStorage.setItem("token", token),
   logout: () => localStorage.clear()
 };
-
-interface User {
-  firstName: string;
-}
 
 interface AuthContext {
   user: User | null;
@@ -48,8 +46,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         updateUser(null);
         return false;
       }
-
-      const user: User = { firstName: "Lucas" };
 
       updateLoginStatus("LOGGED_IN");
       updateToken(token);

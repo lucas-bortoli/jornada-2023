@@ -8,11 +8,14 @@ import { useAuth } from "../../hooks/useAuth";
 import { FormEventHandler, useEffect, useState } from "react";
 import { LoadingButton } from "../../components/LoadingButton";
 import { run } from "../../utils/run";
+import { api } from "../../api/api";
 
 export function LoginPage() {
   const auth = useAuth();
   const navigate = useNavigate();
-  const [loginHasError, setLoginHasError] = useState(false);
+  const [loginState, setLoginState] = useState<null | "PENDING" | "SUCCESS" | "ERROR">(null);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   useDocumentTitle("Login");
 
@@ -27,11 +30,17 @@ export function LoginPage() {
   const handleLoginSubmit: FormEventHandler = async (event) => {
     event.preventDefault();
 
-    setLoginHasError(false);
+    setLoginState("ERROR");
 
-    const success = await auth.login("token");
+    try {
+      const { token } = await api.exchangeCredentialsForToken({ username, password });
+      const success = await auth.login(token);
 
-    setLoginHasError(!success);
+      setLoginState(success ? "SUCCESS" : "ERROR");
+    } catch (error) {
+      console.error("Falha no login", error);
+      setLoginState("ERROR");
+    }
   };
 
   useEffect(() => {
@@ -52,13 +61,22 @@ export function LoginPage() {
 
         return (
           <form className={styles.form} onSubmit={handleLoginSubmit}>
-            {loginHasError && <p className={styles.loginError}>As informações estão incorretas.</p>}
+            {loginState === "ERROR" && <p className={styles.loginError}>As informações estão incorretas.</p>}
             <InputWithIcon
               label="E-mail ou telefone"
               icon={<AccountCircle />}
-              error={loginHasError}
+              error={loginState === "ERROR"}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
-            <InputWithIcon type="password" label="Senha" icon={<Key />} error={loginHasError} />
+            <InputWithIcon
+              type="password"
+              label="Senha"
+              icon={<Key />}
+              error={loginState === "ERROR"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <div className={styles.links}>
               <Link onClick={handleRegisterInstead}>Não tenho cadastro ainda</Link>
               <Link onClick={handleForgotPassword}>Esqueci minha senha</Link>
