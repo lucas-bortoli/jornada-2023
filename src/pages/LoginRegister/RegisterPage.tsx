@@ -9,7 +9,7 @@ import {
   Link
 } from "@mui/material";
 import styles from "./style.module.css";
-import { Dialpad, Email, Key, Phone } from "@mui/icons-material";
+import { Dialpad, Email, Key, KeyOutlined, Person, Phone } from "@mui/icons-material";
 import { InputWithIcon } from "./InputWithIcon";
 import { useNavigate } from "react-router-dom";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
@@ -38,11 +38,18 @@ export function RegisterPage() {
         <InputWithIcon
           type="text"
           label="Nome completo"
-          icon={<Email />}
+          icon={<Person />}
           onChange={(e) => setFormName(e.target.value)}
           value={formName}
         />
         <div className={styles.horiz}>
+          <InputWithIcon
+            type="email"
+            label="E-mail"
+            icon={<Email />}
+            onChange={(e) => setFormEmail(e.target.value)}
+            value={formEmail}
+          />
           <InputWithIcon
             type="text"
             label="CPF"
@@ -50,36 +57,14 @@ export function RegisterPage() {
             onChange={(e) => setFormCpf(e.target.value)}
             value={formCpf}
           />
-          <InputWithIcon
-            type="tel"
-            label="Telefone"
-            icon={<Phone />}
-            onChange={(e) => setFormTel(e.target.value)}
-            value={formTel}
-          />
         </div>
         <InputWithIcon
-          type="email"
-          label="E-mail"
-          icon={<Email />}
-          onChange={(e) => setFormEmail(e.target.value)}
-          value={formEmail}
+          type="password"
+          label="Senha"
+          icon={<KeyOutlined />}
+          onChange={(e) => setFormPassword(e.target.value)}
+          value={formPassword}
         />
-        <div className={styles.horiz}>
-          <InputWithIcon
-            type="password"
-            label="Senha"
-            onChange={(e) => setFormPassword(e.target.value)}
-            value={formPassword}
-          />
-          <InputWithIcon
-            type="password"
-            label="Confirmar senha"
-            icon={<Key />}
-            onChange={(e) => setFormPasswordConfirm(e.target.value)}
-            value={formPasswordConfirm}
-          />
-        </div>
         <div className={styles.links}>
           <Link onClick={handleLoginInstead}>Ao invés disso, fazer login</Link>
         </div>
@@ -87,12 +72,11 @@ export function RegisterPage() {
           <Button variant="contained">Criar conta</Button>
         </div>
       </form>
-      <Dialog open={true} maxWidth="md">
+      <Dialog open={false} maxWidth="md">
         <DialogTitle>Carregando, aguarde..</DialogTitle>
-        <DialogContent >
+        <DialogContent>
           <DialogContentText className={styles.loadingModalContent}>
-            <CircularProgress />
-            O cadastro está sendo feito.
+            <CircularProgress />O cadastro está sendo feito.
           </DialogContentText>
         </DialogContent>
       </Dialog>
