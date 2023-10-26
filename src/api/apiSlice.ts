@@ -12,16 +12,16 @@ export const appApi = createApi({
   tagTypes: ["currentUser"],
   endpoints: (builder) => ({
     passwordResetStart: builder.mutation<{}, { email: string }>({
-      query: (requestBody) => ({ url: "/rescue/start", body: requestBody })
+      query: (requestBody) => ({ method: "POST", url: "/rescue/start", body: requestBody })
     }),
     passwordResetCheck: builder.mutation<{ validCode: boolean }, { code: string }>({
-      query: (requestBody) => ({ url: "/rescue/test", body: requestBody })
+      query: (requestBody) => ({ method: "POST", url: "/rescue/test", body: requestBody })
     }),
     passwordResetConfirm: builder.mutation<
       { success: boolean },
       { code: string; newPassword: string }
     >({
-      query: (requestBody) => ({ url: "/rescue/confirm", body: requestBody })
+      query: (requestBody) => ({ method: "POST", url: "/rescue/confirm", body: requestBody })
     }),
     createUser: builder.mutation<
       User,
@@ -33,13 +33,13 @@ export const appApi = createApi({
         password: string;
       }
     >({
-      query: (requestBody) => ({ url: "/users/register", body: requestBody })
+      query: (requestBody) => ({ method: "POST", url: "/users/register", body: requestBody })
     }),
     login: builder.mutation<
       { token: string; expires_at: string },
       { username: string; password: string }
     >({
-      query: (requestBody) => ({ url: "/users/login", body: requestBody }),
+      query: (requestBody) => ({ method: "POST", url: "/users/login", body: requestBody }),
       invalidatesTags: ["currentUser"]
     }),
     getCurrentUser: builder.query<User, { token: string }>({
@@ -60,7 +60,7 @@ export const appApi = createApi({
         classesQuantity: number;
       }
     >({
-      query: (requestBody) => ({ url: "/plan/create", body: requestBody })
+      query: (requestBody) => ({ method: "POST", url: "/plan/create", body: requestBody })
     })
   })
 });
