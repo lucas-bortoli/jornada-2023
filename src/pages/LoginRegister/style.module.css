@@ -91,6 +91,10 @@
   .horiz {
     flex-direction: column;
   }
+
+  .horiz > * {
+    width: 100%;
+  }
 }
 
 @keyframes login_fadeIn {
