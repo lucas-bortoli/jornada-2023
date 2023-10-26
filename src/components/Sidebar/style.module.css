@@ -27,13 +27,26 @@
   gap: 1rem;
 }
 
-.helpTopic {
+.helpWindow ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.helpWindow details[open] summary {
+  margin-bottom: 0.5rem;
+}
+
+.helpWindow details {
   border: 1px solid #ccc;
-  border-radius: 1rem;
+  border-radius: 0.25rem;
   padding: 1rem;
 }
 
-.helpTopic summary {
+.helpWindow summary {
   cursor: pointer;
   font-weight: bold;
   user-select: none;
