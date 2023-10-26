@@ -25,6 +25,8 @@ import { LoginPage } from "./pages/LoginRegister/LoginPage.tsx";
 import { LoginRegisterPageWrapper } from "./pages/LoginRegister/index.tsx";
 import { RegisterPage } from "./pages/LoginRegister/RegisterPage.tsx";
 import { ForgotPasswordPage } from "./pages/LoginRegister/ForgotPasswordPage.tsx";
+import { Provider as ReduxProvider } from "react-redux";
+import { store } from "./store.ts";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,9 +44,11 @@ const router = createBrowserRouter(
 );
 
 createRoot(document.getElementById("app")!).render(
-  <AuthProvider>
-    <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
-    </ThemeProvider>
-  </AuthProvider>
+  <ReduxProvider store={store}>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </AuthProvider>
+  </ReduxProvider>
 );

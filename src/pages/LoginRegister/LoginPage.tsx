@@ -8,14 +8,15 @@ import { useAuth } from "../../hooks/useAuth";
 import { FormEventHandler, useEffect, useState } from "react";
 import { LoadingButton } from "../../components/LoadingButton";
 import { run } from "../../utils/run";
-import { api } from "../../api/api";
+import { useLoginMutation } from "../../api/apiSlice";
 
 export function LoginPage() {
   const auth = useAuth();
   const navigate = useNavigate();
-  const [loginState, setLoginState] = useState<null | "PENDING" | "SUCCESS" | "ERROR">(null);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const [ triggerLogin, loginStatus ] = useLoginMutation();
 
   useDocumentTitle("Login");
 
@@ -30,42 +31,38 @@ export function LoginPage() {
   const handleLoginSubmit: FormEventHandler = async (event) => {
     event.preventDefault();
 
-    setLoginState("ERROR");
-
     try {
-      const { token } = await api.exchangeCredentialsForToken({ username, password });
-      const success = await auth.login(token);
+      const { token } = await triggerLogin({ username, password }).unwrap();
 
-      setLoginState(success ? "SUCCESS" : "ERROR");
+      auth.setToken(token);
     } catch (error) {
       console.error("Falha no login", error);
-      setLoginState("ERROR");
     }
   };
 
   useEffect(() => {
-    if (auth.loginStatus === "LOGGED_IN") {
+    if (loginStatus.isSuccess) {
       setTimeout(() => {
         navigate("/");
       }, 5000);
     }
-  }, [auth.loginStatus]);
+  }, [loginStatus.isSuccess]);
 
   return (
     <Card className={styles.card}>
       <h1>Bem-vindo de volta</h1>
       {run(() => {
-        if (auth.loginStatus === "LOGGED_IN") {
+        if (loginStatus.isSuccess) {
           return <p>O login foi realizado. Você será redirecionado em instantes...</p>;
         }
 
         return (
           <form className={styles.form} onSubmit={handleLoginSubmit}>
-            {loginState === "ERROR" && <p className={styles.loginError}>As informações estão incorretas.</p>}
+            {loginStatus.isError && <p className={styles.loginError}>As informações estão incorretas.</p>}
             <InputWithIcon
               label="E-mail ou telefone"
               icon={<AccountCircle />}
-              error={loginState === "ERROR"}
+              error={loginStatus.isError}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -73,7 +70,7 @@ export function LoginPage() {
               type="password"
               label="Senha"
               icon={<Key />}
-              error={loginState === "ERROR"}
+              error={loginStatus.isError}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -85,8 +82,8 @@ export function LoginPage() {
               <LoadingButton
                 variant="contained"
                 onClick={handleLoginSubmit}
-                disabled={auth.loginStatus === "PENDING"}
-                loading={auth.loginStatus === "PENDING"}
+                disabled={loginStatus.isLoading}
+                loading={loginStatus.isLoading}
               >
                 Entrar
               </LoadingButton>

@@ -7,5 +7,6 @@ interface Props extends ButtonProps {
 export const LoadingButton = (props: Props) => {
   const icon = props.loading ? <CircularProgress size="1em" color="inherit" /> : props.startIcon;
 
-  return <Button {...props} startIcon={icon}>{props.children}</Button>;
+  // loading undefined to disable error for unknown html attribute
+  return <Button {...props} {...{loading: undefined}} startIcon={icon}>{props.children}</Button>;
 };
