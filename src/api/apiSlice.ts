@@ -58,9 +58,13 @@ export const appApi = createApi({
         syllabus: string;
         content: string;
         classesQuantity: number;
+        detailAmount: number;
+        creativityAmout: number;
+        maxLenght: number;
       }
     >({
-      query: (requestBody) => ({ method: "POST", url: "/plan/create", body: requestBody })
+      query: (requestBody) => ({ method: "POST", url: "/plan/create", body: requestBody }),
+      transformResponse: (response: string) => JSON.parse(response)
     })
   })
 });
