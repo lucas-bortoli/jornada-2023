@@ -1,8 +1,8 @@
 export interface CreatedPlan {
   planArr: {
     theme: string;
-    objectives: string;
+    objectives: string[];
     duration: string;
-    content: string
+    content: string[]
   }[]
 }

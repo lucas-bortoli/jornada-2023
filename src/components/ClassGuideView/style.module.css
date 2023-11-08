@@ -34,6 +34,40 @@
   font-size: inherit;
 }
 
+.page :is(h1,h2,h3,h4,h5,h6) {
+  margin: 0.5em 0;
+}
+
+.page h6 {
+  font-size: 1em;
+}
+
+.page h5 {
+  font-size: 1.25em;
+}
+
+.page h4 {
+  font-size: 1.5em;
+}
+
+.page h3 {
+  margin-top: 1em;
+  font-size: 1.75em;
+}
+
+.page h2 {
+  font-size: 2em;
+}
+
+.page h1 {
+  font-size: 2.25em;
+}
+
+.pageClass {
+  padding-left: 2em;
+  border-left: 2px solid #e0e0e0;
+}
+
 @media screen and (max-width: 640px) {
   .actionBar {
     flex-direction: column;

@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { CreatedPlan } from "./CreatedPlan";
 import { User } from "./User";
 
-export const baseUrl = location.origin;
+export const baseUrl = "http://localhost:3000";
 
 export const appApi = createApi({
   reducerPath: "api",
@@ -63,8 +63,7 @@ export const appApi = createApi({
         maxLenght: number;
       }
     >({
-      query: (requestBody) => ({ method: "POST", url: "/plan/create", body: requestBody }),
-      transformResponse: (response: string) => JSON.parse(response)
+      query: (requestBody) => ({ method: "POST", url: "/plan/create", body: requestBody })
     })
   })
 });

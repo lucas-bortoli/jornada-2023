@@ -7,6 +7,7 @@ import { ToolWindow } from "../../ToolWindow";
 interface Properties {
   isOpen: boolean;
   onClose(): void;
+  onRegenerateClick(): void;
 }
 
 export function ParameterTuningWindow(props: Properties) {
@@ -72,7 +73,7 @@ export function ParameterTuningWindow(props: Properties) {
       <div className={styles.spacing} />
       <div className={styles.actionButtons}>
         <Button onClick={handleCloseOverlay}>Cancelar</Button>
-        <Button variant="contained" startIcon={<Loop />} className={styles.regenerate}>
+        <Button variant="contained" startIcon={<Loop />} className={styles.regenerate} onClick={props.onRegenerateClick}>
           Regenerar
         </Button>
       </div>
